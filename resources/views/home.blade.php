@@ -29,6 +29,8 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
+    <link rel="stylesheet" href="assets/css/custom.css">
+
     </head>
     
     <body>
@@ -83,6 +85,34 @@ https://templatemo.com/tm-558-klassy-cafe
                             </li>
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+
+                            <li class="submenu">
+                                <a href="javascript:;">Account</a>
+                                <ul>
+                                    @if (Route::has('login'))
+                                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                            @auth
+                                                <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ url('/user/profile') }}">Profile</a></li>
+                                                <li>
+                                                    <form action="/logout" method="post" x-data>
+                                                        @csrf
+                                                        <button class="logout-btn">Logout</button>
+                                                    </form>
+                                                </li>
+                                                
+                                            @else
+                                                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a></li>
+
+                                                @if (Route::has('register'))
+                                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    @endif
+                                </ul>
+                                
+                            </li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
