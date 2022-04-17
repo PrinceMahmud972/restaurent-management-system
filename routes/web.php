@@ -20,6 +20,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/users', [AdminController::class, 'user']);
 Route::get('/deleteuser/{id}', [AdminController::class, 'deleteUser']);
 
+Route::get('/foodmenu', [AdminController::class, 'foodMenu']);
+Route::post('/uploadfood', [AdminController::class, 'uploadFood']);
+Route::get('/deletefood/{id}', [AdminController::class, 'deleteFood']);
+
 Route::get('/redirects', [HomeController::class, 'redirects']);
 
 Route::middleware([
